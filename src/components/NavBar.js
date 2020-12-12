@@ -1,19 +1,32 @@
-import { NavLink } from "react-router-dom";
-import { observer } from "mobx-react";
 import React from "react";
-import authStore from "../stores/authStore";
-// import { FiLogOut } from "react-icons/fi";
-import SignInForm from "./SignInForm";
-import SignUpForm from "./SignUpForm";
 
-const NavBar = (props) => {
+//navLink
+import { NavLink } from "react-router-dom";
+
+//observer
+import { observer } from "mobx-react";
+
+//store
+import authStore from "../stores/authStore";
+
+//signout icon
+import { AiOutlineLogout } from "react-icons/ai";
+
+const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <>
+        <NavLink to="/" className="nav-link">
+          Home <span className="sr-only"></span>
+        </NavLink>
         {authStore.user ? (
           <>
             <p>Hello, {authStore.user.username}</p>
-            {/* <FiLogOut onClick={authStore.signout} size="2em" color="red" /> */}
+            <AiOutlineLogout
+              size="2em"
+              color="red"
+              onClick={authStore.signout}
+            />
           </>
         ) : (
           <>
@@ -27,18 +40,7 @@ const NavBar = (props) => {
           </>
         )}
       </>
-      <div className="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item active">
-            <NavLink to="/things" className="nav-link">
-              Random Things <span className="sr-only"></span>
-            </NavLink>
-            <NavLink to="/treasure" className="nav-link">
-              Treasure ! <span className="sr-only"></span>
-            </NavLink>
-          </li>
-        </ul>
-      </div>
+      <div className="collapse navbar-collapse" id="navbarNavDropdown"></div>
     </nav>
   );
 };

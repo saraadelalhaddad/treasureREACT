@@ -4,13 +4,15 @@ import { observer } from "mobx-react";
 
 import Routes from "./Router";
 
+//styles
+import { GlobalStyle } from "./styles";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <NavBar />
-        <Routes />
-      </header>
+    <div>
+      <GlobalStyle />
+      <NavBar />
+      <Routes />
     </div>
   );
 }

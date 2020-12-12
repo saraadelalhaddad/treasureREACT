@@ -8,16 +8,24 @@ import "./App.css";
 import SignInForm from "./components/SignInForm";
 import SignUpForm from "./components/SignUpForm";
 import Home from "./components/Home";
+import List from "./components/List";
+
+//link
+import { Link } from "react-router-dom";
+import thingStore from "./stores/thingStore";
 
 const Routes = () => {
   return (
     <Switch>
-      {/* <Route path="/signup">
-        <SignUpForm />
+      <Route path="/randomthings">
+        <h1>hello random</h1>
+
+        <List mylist="random" />
       </Route>
-        <Route path="/signup">
-        <SignUpForm />
-      </Route> */}
+      <Route path="/treasure">
+        <Link to="/">hello treasure</Link>
+        <List mylist="treasure" />
+      </Route>
       <Route path="/signup">
         <SignUpForm />
       </Route>

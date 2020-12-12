@@ -1,7 +1,17 @@
+//state
 import { useState } from "react";
+
+//styles
 import { CreateButtonStyled } from "../styles";
+
+//store
 import authStore from "../stores/authStore";
+
+//observer
 import { observer } from "mobx-react";
+
+//Link
+import { Link } from "react-router-dom";
 
 const Signin = () => {
   const [user, setUser] = useState({
@@ -20,7 +30,7 @@ const Signin = () => {
   return (
     <>
       <h3>Signin</h3>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Username</label>
           <input
@@ -41,12 +51,8 @@ const Signin = () => {
             onChange={handleChange}
           />
         </div>
-        <CreateButtonStyled
-          className="btn float-right"
-          type="submit"
-          onClick={handleSubmit}
-        >
-          Sign In
+        <CreateButtonStyled className="btn float-right" type="submit">
+          Signin
         </CreateButtonStyled>
       </form>
     </>
