@@ -1,6 +1,5 @@
 import { makeAutoObservable } from "mobx";
 import instance from "./instance";
-import decode from "jwt-decode";
 
 class ThingStore {
   things = [];
@@ -12,17 +11,27 @@ class ThingStore {
     try {
       const res = await instance.get("/things/random");
 
-      const check = res.data.map((item) => item.name);
-      console.log("check", check);
-      this.things = check;
+      const randomThings = res.data.map((item) => item.name);
+
+      this.things = randomThings;
     } catch (error) {
       console.log("thingStore -> getRandom -> error", error);
     }
   };
 
-  getTreasure = () => {};
+  getTreasure = async () => {
+    try {
+      const res = await instance.get("/things/treasure");
+
+      const treasureThings = res.data.map((item) => item.name);
+
+      this.things = treasureThings;
+    } catch (error) {
+      console.log("thingStore -> getRandom -> error", error);
+    }
+  };
 }
 
 const thingStore = new ThingStore();
-thingStore.getRandom();
+
 export default thingStore;

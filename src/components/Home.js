@@ -1,22 +1,34 @@
 //styles
-import { Title } from "../styles";
+import { ButtonStyled, Title } from "../styles";
 
 //Link
 import { Link } from "react-router-dom";
-import thingStore from "../stores/thingStore";
+
+//store
+import authStore from "../stores/authStore";
 
 const Home = () => {
   return (
     <>
-      <Title>Welcome </Title>
+      {authStore.user !== null ? (
+        <>
+          <Title>Welcome </Title>
+          <ButtonStyled>
+            <Link to="/randomthings">Random Things</Link>
+          </ButtonStyled>
 
-      <Link to="/randomthings" className="nav-link">
-        Random Things
-        <span className="sr-only"></span>
-      </Link>
-      <Link to="/treasure" className="-link">
-        Treasure ! <span className="sr-only"></span>
-      </Link>
+          <ButtonStyled>
+            <Link to="/treasure">Treasure !</Link>
+          </ButtonStyled>
+        </>
+      ) : (
+        <>
+          <Title>Welcome </Title>
+          <ButtonStyled>
+            <Link to="/randomthings">Random Things</Link>
+          </ButtonStyled>
+        </>
+      )}
     </>
   );
 };
